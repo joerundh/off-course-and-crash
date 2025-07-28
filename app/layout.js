@@ -20,8 +20,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased w-[1000px] mx-auto flex flex-col gap-[20px]`}
       >
+        <header className={"w-full border-[1px] border-zinc-600 p-10 flex flex-col gap-2"}>
+          <h1 className={"w-full text-xl"}>Sanity Crash Course</h1>
+          <p className={"w-full text-xs"}>(Affectionately denoted here by "Off Course and Crash")</p>
+        </header>
         {children}
       </body>
     </html>

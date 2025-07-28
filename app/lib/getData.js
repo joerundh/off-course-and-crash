@@ -1,21 +1,32 @@
 import { client } from "./sanity";
 
-export async function getSanityData() {
-
-    const query = `*[_type == "profile"]{
-    _id,
-    name,
-    "src": image.asset->url
+export async function getPosts(offset, limit) {
+    const query = `*[_type == "post"]{
+        _id,
+        title,
+        body[1..-1] {
+            _type == "block" => {
+                "type": "text",
+                "value": children[0].text
+            },
+            _type == "image" => {
+                "type": "image",
+                "src": asset->url
+            }
+        },
+        author->{
+            name,
+            "src": image.asset->url
+        }
     }`;
 
     try {
         const data = await client.fetch(query, {
-            cache: 'no-store'
+            cache: "no-store"
         });
         return data;
     }
-
-    catch (error) {
-        console.log(error);
+    catch (e) {
+        console.log(e);
     }
 }
