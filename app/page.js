@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getSanityData, getPosts } from "./lib/getData";
+import { Fragment } from "react";
 
 export default async function Home() {
   const data = await getPosts();
@@ -14,7 +15,10 @@ export default async function Home() {
     if (part.type === "text") {
       return <p className={"w-full text-black"} key={key}>{part.value}</p>
     } else if (part.type === "image") {
-      return <img src={part.src} alt={`Image ${key}`} />
+      if (!part.src) {
+        return <Fragment key={key} />;
+      }
+      return <Image key={key} src={part.src} alt={`Image ${key}`} width={part.width} height={part.height} />
     }
   }
 

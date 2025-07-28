@@ -4,14 +4,16 @@ export async function getPosts(offset, limit) {
     const query = `*[_type == "post"]{
         _id,
         title,
-        body[1..-1] {
+        body[] {
             _type == "block" => {
                 "type": "text",
                 "value": children[0].text
             },
             _type == "image" => {
                 "type": "image",
-                "src": asset->url
+                "src": asset->url,
+                "width": asset->metadata.dimensions.width,
+                "height": asset->metadata.dimensions.height
             }
         },
         author->{
