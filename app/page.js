@@ -2,6 +2,8 @@ import Image from "next/image";
 import { getPosts } from "./lib/getData";
 import { Fragment } from "react";
 
+export const revalidate = 0;
+
 export default async function Home() {
   const data = await getPosts();
   if (!Object.entries(data).length) {
