@@ -26,6 +26,7 @@ export async function getPosts(offset, limit) {
         const data = await client.fetch(query, {
             cache: "no-store"
         });
+        console.log(data)
         return data;
     }
     catch (e) {
