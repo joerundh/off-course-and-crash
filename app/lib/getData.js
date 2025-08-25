@@ -1,7 +1,7 @@
 import { client } from "./sanity";
 
 export async function getPosts(offset, limit) {
-    const query = `*[_type == "post"]{
+    const query = `*[_type == "post"] | order(title desc) {
         _id,
         title,
         body[] {
@@ -20,7 +20,7 @@ export async function getPosts(offset, limit) {
             name,
             "src": image.asset->url
         }
-    } | order(_createdAt desc)`;
+    }`;
 
     try {
         const data = await client.fetch(query, {
