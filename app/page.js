@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { getSanityData, getPosts } from "./lib/getData";
+import { getPosts } from "./lib/getData";
 import { Fragment } from "react";
 
 export default async function Home() {

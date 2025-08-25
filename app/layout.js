@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Sanity Crash Course",
-  description: "With (in some circles not so) trivial content.",
+  description: "With some (in certain circles not so) trivial content.",
 };
 
 export default function RootLayout({ children }) {
