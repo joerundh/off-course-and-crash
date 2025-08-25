@@ -13,7 +13,7 @@ export default async function Home() {
 
   const parsePiece = (part, key) => {
     if (part.type === "text") {
-      return <p className={"w-full text-black"} key={key}>{part.value}</p>
+      return <p className={"w-full text-black bg-white"} key={key}>{part.value}</p>
     } else if (part.type === "image") {
       if (!part.src) {
         return <Fragment key={key} />;
